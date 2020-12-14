@@ -22,3 +22,12 @@ async function slowResult(){ //async says we're going to call this function but 
 
 slowResult();
 
+async function swResult() {
+    await fetch('https://swapi.dev/api/people/1/')
+      .then(res => res.json())
+      .then(json => console.log(json));
+    console.log('this should print last');
+}
+
+swResult();
+
