@@ -6,26 +6,31 @@
 
 const router = require('express').Router();
 const User = require("../db").import("../models/user.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+// USER SIGNUP
 //Create a new endpoint : /create
 //The endpoint is going to be a post request
 //Have an object that matches the model of UserTable (email/password).
 //Let sequelize create a new record in the database (create)
 router.post('/create', function(req, res) {
-        
-    let userModel = {
+    User.create({
         email: req.body.user.email,
-        password: req.body.user.password,
-    };
-    User.create(userModel).then(function(user){
-        let responseObject = {
-            user: user,
-        };
-        res.json(responseObject);
+        password: bcrypt.hashSync(req.body.user.password, 13)
     })
+    .then(
+        function createSuccess(user){
+            let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60 * 60* 24});
+        res.json({
+            user: user,
+            message: "User successfully created!",
+            sessionToken: token
+        });
+        }
+    )
     .catch(function(err){
         res.status(500).json({error: err});
     });
-
 });
 
 //USER SIGNIN
@@ -36,9 +41,30 @@ router.post('/create', function(req, res) {
 //Let sequelize return a success
 //if we find one return user info and if user doesn't exist return "user does not exist"
 router.post('/login', function(req, res) {
-    User.findOne({ where: {email: "test3@test.com"}})
-        .then(function(user){
-            res.json({user: user})
-        });
+
+    User.findOne({ where: {email: req.body.user.email}})
+        .then(function loginSuccess(user){
+            if(user){
+                bcrypt.compare(req.body.user.password, user.password, function (err, matches){
+                    if (matches) {
+                let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 24});
+                res.status(200).json({
+                    user: user, 
+                    message:"User successfully logged in!", 
+                    sessionToken: token
+            })
+            } else {
+                res.status(502).send({error: "Login Failed"})
+            } 
+            }); 
+        } else {
+                res.status(500).json({error: "User does not exist."})
+            }
+        }), 
+            (err) => res.status(501).send({error: "Failed to process."});
+        
+            // .catch(function (err) {
+            //     res.status(500).json({error: err});
+        // });    
 });
 module.exports = router;
