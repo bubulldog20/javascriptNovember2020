@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 
+
 const App = () => {
   return (
     <div>
@@ -15,7 +16,7 @@ const App = () => {
       <Router>
         <Sidebar />
       </Router>
-      <Footer />
+      <Footer /> 
     </div>
   );
 }

@@ -11,6 +11,8 @@ body {
 footer {
   margin-top: 0.8em!important;
   margin-left: 1.5em;
+  background-color: #53565A;
+  color: white;
 }
 
 .main {
