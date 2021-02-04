@@ -24,6 +24,7 @@ const SampleEffect = () => {
     const [timerRunning, setTimerRunning] = useState(false);
     
     useEffect(() => {
+        console.log('we initiated a state change');
         let timer;
         if (timerRunning) {
             timer = window.setTimeout(() => {
@@ -32,7 +33,11 @@ const SampleEffect = () => {
             }, 2000)
             }
             return () => {window.clearTimeout(timer); console.log('the timer was cleaned up', Date.now()/1000)}
-    })
+    });
+
+    useEffect(() => {
+        console.log('This should show up if I typed the code correctly.');
+    }, [])
 
     let buttonHandler = () => {
         if (!timerRunning){
