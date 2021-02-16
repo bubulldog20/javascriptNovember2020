@@ -11,6 +11,11 @@ import JSXRules from '../concepts/JSXRules';
 import State from '../concepts/State';
 import Effects from '../concepts/Effects'; 
 import PropsDemo from '../concepts/PropsDemo';
+import Hooks from '../concepts/Hooks';
+import TimePiecesApp from '../apps/timer-apps/TimePiecesApp';
+import TimerApp from '../apps/timer-apps/TimerApp';
+import ClockApp from '../apps/timer-apps/ClockApp';
+import StopWatchApp from '../apps/timer-apps/StopWatchApp';
 
 const Sidebar = () => {
     return (
@@ -23,6 +28,11 @@ const Sidebar = () => {
                     <li><Link to = "/state">useState</Link></li>
                     <li><Link to ="/effects">useEffect</Link></li>
                     <li><Link to ="/propsdemo">PropsDemo</Link></li>
+                    <li><Link to ="/hooks">Hooks</Link></li>
+                    <li><Link to ="/apps/timer-apps/timepiecesapp">TimePieces</Link></li>
+                    <li><Link to ="/apps/timer-apps/timerapp">Timer</Link></li>
+                    <li><Link to ="/apps/timer-apps/clockapp">Clock</Link></li>
+                    <li><Link to ="/apps/timer-apps/stopwatchapp">Stop Watch</Link></li>
                     <li><Link to="/resources">Resources</Link></li>
                 </ul>
             </div>
@@ -36,6 +46,11 @@ const Sidebar = () => {
                     <Route exact path="/state"><State/></Route>
                     <Route exact path="/effects"><Effects/></Route>
                     <Route exact path="/propsdemo"><PropsDemo/></Route>
+                    <Route exact path="/hooks"><Hooks/></Route>
+                    <Route exact path="/apps/timer-apps/timepiecesapp"><TimePiecesApp/></Route>
+                    <Route exact path="/apps/timer-apps/timerapp"><TimerApp/></Route>
+                    <Route exact path="/apps/timer-apps/clockapp"><ClockApp/></Route>
+                    <Route exact path="/apps/timer-apps/stopwatchapp"><StopWatchApp/></Route>
                 </Switch>
             </div>
         </div>
