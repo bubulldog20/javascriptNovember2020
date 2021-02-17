@@ -13,9 +13,12 @@ import Effects from '../concepts/Effects';
 import PropsDemo from '../concepts/PropsDemo';
 import Hooks from '../concepts/Hooks';
 import TimePiecesApp from '../apps/timer-apps/TimePiecesApp';
-import TimerApp from '../apps/timer-apps/TimerApp';
-import ClockApp from '../apps/timer-apps/ClockApp';
-import StopWatchApp from '../apps/timer-apps/StopWatchApp';
+// import TimerApp from '../apps/timer-apps/TimerApp';
+// import ClockApp from '../apps/timer-apps/ClockApp';
+// import StopWatchApp from '../apps/timer-apps/StopWatchApp';
+import NytApp from '../apps/nyt-app/NytApp';
+import MovieApp from '../apps/the-movie-db/MovieApp';
+// import MovieAppDisplay from '../apps/the-movie-db/MovieAppDisplay/MovieAppDisplay';
 
 const Sidebar = () => {
     return (
@@ -30,9 +33,11 @@ const Sidebar = () => {
                     <li><Link to ="/propsdemo">PropsDemo</Link></li>
                     <li><Link to ="/hooks">Hooks</Link></li>
                     <li><Link to ="/apps/timer-apps/timepiecesapp">TimePieces</Link></li>
-                    <li><Link to ="/apps/timer-apps/timerapp">Timer</Link></li>
+                    {/* <li><Link to ="/apps/timer-apps/timerapp">Timer</Link></li>
                     <li><Link to ="/apps/timer-apps/clockapp">Clock</Link></li>
-                    <li><Link to ="/apps/timer-apps/stopwatchapp">Stop Watch</Link></li>
+                    <li><Link to ="/apps/timer-apps/stopwatchapp">Stopwatch</Link></li> */}
+                    <li><Link to ="/apps/nyt-app/nytapp">NYT App</Link></li>
+                    <li><Link to ="/apps/the-movie-db/movieapp">Movie App</Link></li>
                     <li><Link to="/resources">Resources</Link></li>
                 </ul>
             </div>
@@ -48,9 +53,11 @@ const Sidebar = () => {
                     <Route exact path="/propsdemo"><PropsDemo/></Route>
                     <Route exact path="/hooks"><Hooks/></Route>
                     <Route exact path="/apps/timer-apps/timepiecesapp"><TimePiecesApp/></Route>
-                    <Route exact path="/apps/timer-apps/timerapp"><TimerApp/></Route>
+                    {/* <Route exact path="/apps/timer-apps/timerapp"><TimerApp/></Route>
                     <Route exact path="/apps/timer-apps/clockapp"><ClockApp/></Route>
-                    <Route exact path="/apps/timer-apps/stopwatchapp"><StopWatchApp/></Route>
+                    <Route exact path="/apps/timer-apps/stopwatchapp"><StopWatchApp/></Route> */}
+                    <Route exact path="/apps/nyt-app/nytapp"><NytApp/></Route>
+                    <Route exact path="/apps/the-movie-db/movieapp"><MovieApp/></Route>
                 </Switch>
             </div>
         </div>
